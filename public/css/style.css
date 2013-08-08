@@ -1,0 +1,53 @@
+body {
+    margin: 0; padding: 40px;
+    /*background: url(../img/debut_dark.png);*/
+    background: #fefefe;
+}
+.container {
+    width: 800px;
+}
+#main {
+    background: #e3e3e3;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    margin-bottom: 15px;
+    border-radius: 2px;
+}
+footer, footer a { color: gray; }
+h1 {
+    float: left;
+    margin: 0; padding: 0 20px;
+    line-height: 50px;
+}
+nav {
+    font-weight: bold;
+    border-bottom: 1px solid #fefefe;
+}
+#content {
+    height: 580px;
+}
+.mid {
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+.gallery {
+    height: 100%;
+}
+.gallery figure {
+    height: 80%;
+}
+.pager {
+    width: 100%; height: 20%;
+    margin: 0;
+}
+/*.pager a img {*/
+    /*-webkit-transition: -webkit-transform .2s;*/
+/*}*/
+/*.pager a:hover img {*/
+    /*-webkit-transform: scale(1.2);*/
+/*}*/

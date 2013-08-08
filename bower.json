@@ -1,0 +1,10 @@
+{
+  "name": "ronen-akerman",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "*",
+    "bootstrap": "*",
+    "bxslider-4": "*",
+    "jquery-galleria": "*"
+  }
+}

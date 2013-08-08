@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Akerman</title>
+
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/components/jquery-galleria/src/themes/classic/galleria.classic.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<div id="main" class="container">
+    <nav class="clearfix">
+        <h1>r|a</h1>
+        <ul class="nav navbar-nav">
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Fashion</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <!--<div class="mid">
+            <img src="http://placehold.it/250x350">
+        </div>-->
+
+        <div class="gallery">
+            <figure class="mid">
+                <img src="http://placehold.it/300x300&text=a" />
+            </figure>
+
+            <div class="pager">
+                <a href="#/a"><img src="http://placehold.it/100x100&text=a" /></a>
+                <a href="#/b"><img src="http://placehold.it/100x100&text=b" /></a>
+                <a href="#/c"><img src="http://placehold.it/100x100&text=c" /></a>
+                <a href="#/d"><img src="http://placehold.it/100x100&text=d" /></a>
+                <a href="#/e"><img src="http://placehold.it/100x100&text=e" /></a>
+                <a href="#/f"><img src="http://placehold.it/100x100&text=f" /></a>
+                <a href="#/g"><img src="http://placehold.it/100x100&text=g" /></a>
+                <a href="#/h"><img src="http://placehold.it/100x100&text=h" /></a>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="container">
+    <p class="pull-right">
+        <a href="http://www.bardak.co.il" target="_blank">design by Bardak</a>,
+        <a href="http://empeeric.com" target="_blank">site by Empeeric</a>
+    </p>
+    &copy; Ronen Akerman 2008
+</footer>
+
+<script src="/components/jquery/jquery.min.js"></script>
+<script src="/components/bxslider-4/jquery.bxslider.min.js"></script>
+<script src="/js/main.js"></script>
+<script>
+    var img = $('.gallery figure img');
+    router(function(letter) {
+        if (letter)
+            img.attr('src', 'http://placehold.it/300x300&text=' + letter)
+    }, true);
+
+    $('.pager').bxSlider();
+</script>
+
+</body>
+</html>
