@@ -20,8 +20,11 @@ body {
 footer, footer a { color: gray; }
 h1 {
     float: left;
-    margin: 0; padding: 0 20px;
+    margin: 5px 20px; padding: 0;
     line-height: 50px;
+    background: url(../img/logo.png);
+    font-size: 0;
+    width: 59px; height: 40px;
 }
 nav {
     font-weight: bold;
