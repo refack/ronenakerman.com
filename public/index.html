@@ -29,8 +29,18 @@
                 <img src="http://placehold.it/300x300&text=a" />
             </figure>
 
-            <div class="pager">
-                <a href="#/a"><img src="http://placehold.it/80x80&text=a" /></a>
+            <div class="pager left">
+                <a href="#/what"><img src="http://placehold.it/80x80&text=what" /></a>
+                <a href="#/when"><img src="http://placehold.it/80x80&text=when" /></a>
+                <a href="#/why"><img src="http://placehold.it/80x80&text=why" /></a>
+                <a href="#/who"><img src="http://placehold.it/80x80&text=who" /></a>
+                <a href="#/whom"><img src="http://placehold.it/80x80&text=whom" /></a>
+                <a href="#/where"><img src="http://placehold.it/80x80&text=where" /></a>
+                <a href="#/whose"><img src="http://placehold.it/80x80&text=whose" /></a>
+            </div>
+
+            <div class="pager bottom">
+                <a href="#/gallery/a"><img src="http://placehold.it/80x80&text=a" /></a>
                 <a href="#/b"><img src="http://placehold.it/80x80&text=b" /></a>
                 <a href="#/c"><img src="http://placehold.it/80x80&text=c" /></a>
                 <a href="#/d"><img src="http://placehold.it/80x80&text=d" /></a>
@@ -59,14 +69,21 @@
 <script src="/js/main.js"></script>
 <script>
     var img = $('.gallery figure img');
-    router(function(letter) {
-        if (letter)
-            img.attr('src', 'http://placehold.it/300x300&text=' + letter)
+
+    router(function(letter, b) {
+        if (letter == 'gallery')
+            img.attr('src', 'http://placehold.it/300x300&text=' + b);
+
+        else if (letter)
+            img.attr('src', 'http://placehold.it/300x300&text=' + letter);
     }, true);
 
-    $('.pager').hoverSlider({
-        slideWidth: 90,
-        buffer: 50
+    $('.pager.bottom').hoverSlider({
+        slideSize: 90
+    });
+    $('.pager.left').hoverSlider({
+        slideSize: 90,
+        orientation: 'y'
     });
 </script>
 

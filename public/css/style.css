@@ -8,8 +8,12 @@ body {
     width: 800px;
 }
 #main {
-    background: #e3e3e3;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    background: #f1f0ec;
+    background: -moz-radial-gradient(center, ellipse cover, #f1f0ec 0%, #d7d7d7 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, #f1f0ec 0%,#d7d7d7 100%);
+    background: -o-radial-gradient(center, ellipse cover, #f1f0ec 0%,#d7d7d7 100%);
+    background: radial-gradient(ellipse at center, #f1f0ec 0%,#d7d7d7 100%);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
     margin-bottom: 15px;
     border-radius: 2px;
 }
@@ -46,18 +50,27 @@ nav {
 .pager {
     position: absolute; bottom: 0; left: 0;
     width: 100%; height: 100px;
-    margin: 0; padding: 0 5px;
+    margin: 0; padding: 5px;
     overflow-x: hidden;
 }
 .pager a {
     float: left;
-    padding: 10px 5px;
+    padding: 5px;
 }
 .pager a img {
-    -webkit-transition: -webkit-transform .2s,
-        box-shadow .2s;
+    -webkit-transition: -webkit-transform .2s;
 }
 .pager a:hover img {
     -webkit-transform: scale(1.2);
-    box-shadow: 0 2px 5px black;
 }
+
+.pager.left {
+    left: 0; top: 0;
+    width: 100px; height: 83%;
+    overflow-y: hidden;
+}
+
+/*
+    #d7d7d7
+    #f1f0ec
+*/
