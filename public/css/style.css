@@ -3,10 +3,14 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.rtl {
+  direction: rtl;
+}
 body {
   margin: 0;
-  padding: 40px;
+  padding: 60px;
   background: #fefefe;
+  background: url("../img/debut_dark.png");
 }
 .container {
   width: 800px;
@@ -20,8 +24,8 @@ body {
   -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.4);
   box-shadow: 0 10px 20px rgba(0,0,0,0.4);
   margin-bottom: 15px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
 }
 footer,
 footer a {
@@ -41,6 +45,9 @@ nav {
   padding: 5px;
   font-weight: bold;
   border-bottom: 1px solid #fefefe;
+}
+nav a {
+  color: #808080;
 }
 #content {
   height: 530px;
@@ -68,9 +75,13 @@ nav {
   align-items: center;
   text-align: center;
 }
-.gallery {
+section {
+  width: 100%;
   height: 100%;
   position: relative;
+}
+.gallery {
+  height: 100%;
 }
 .gallery figure {
   height: 80%;
@@ -109,4 +120,35 @@ nav {
   width: 100px;
   height: 83%;
   overflow-y: hidden;
+}
+.content {
+  padding: 20px 150px;
+}
+.content ul {
+  position: absolute;
+  left: 0;
+  width: 150px;
+  padding: 0 30px;
+  list-style: none;
+}
+.content ul.rtl {
+  right: 0;
+  left: auto;
+}
+.content ul h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+.content ul a {
+  color: #808080;
+  padding: 5px 0;
+  display: inline-block;
+}
+.content article {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background: #fff;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
 }

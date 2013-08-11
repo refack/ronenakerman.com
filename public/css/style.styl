@@ -1,5 +1,8 @@
 @import 'nib';
 
+radius = 3px;
+link-color = gray;
+
 background-radial(start, end) {
     background: start;
     background: -moz-radial-gradient(center, ellipse cover, start 0%, end 100%);
@@ -9,21 +12,20 @@ background-radial(start, end) {
 }
 
 * { box-sizing: border-box; }
+.rtl { direction: rtl; }
 body {
-    margin: 0; padding: 40px;
-    // background: url(../img/debut_dark.png);
+    margin: 0; padding: 60px;
     background: #fefefe;
+    background: url(../img/debut_dark.png);
 }
-.container {
-    width: 800px;
-}
+.container { width: 800px; }
 #main {
     background-radial: #f1f0ec #d7d7d7;
     box-shadow: 0 10px 20px rgba(0,0,0,0.4);
     margin-bottom: 15px;
-    border-radius: 2px;
+    border-radius: radius;
 }
-footer, footer a { color: gray; }
+footer, footer a { color: link-color; }
 h1 {
     float: left;
     margin: 5px 20px; padding: 0;
@@ -36,6 +38,7 @@ nav {
     padding: 5px;
     font-weight: bold;
     border-bottom: 1px solid #fefefe;
+    a { color: link-color; }
 }
 #content {
     height: 530px;
@@ -47,10 +50,14 @@ nav {
     align-items: center;
     text-align: center;
 }
+section {
+    size: 100%;
+    position: relative;
+}
 
+// Gallery
 .gallery {
     height: 100%;
-    position: relative;
     figure {
         @extend .middle;
         height: 80%;
@@ -64,12 +71,8 @@ nav {
     a {
         float: left;
         padding: 5px;
-        img {
-            transition: transform .2s;
-        }
-        &:hover img {
-            transform: scale(1.2);
-        }
+        img { transition: transform .2s; }
+        &:hover img { transform: scale(1.2); }
     }
     &.left {
         left: 0; top: 0;
@@ -78,3 +81,32 @@ nav {
     }
 }
 
+// Pages
+col = 150px;
+.content {
+    padding: 20px col;
+    ul {
+        position: absolute; left: 0;
+        width: col;
+        padding: 0 30px;
+        list-style: none;
+        &.rtl {
+            right: 0; left: auto;
+        }
+        h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        a {
+            color: link-color;
+            padding: 5px 0;
+            display: inline-block;
+        }
+    }
+    article {
+        size: 100%;
+        padding: 20px;
+        background: white;
+        border-radius: radius;
+    }
+}
