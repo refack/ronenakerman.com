@@ -40,7 +40,7 @@
             </div>
 
             <div class="pager bottom">
-                <a href="#/gallery/a"><img src="http://placehold.it/80x80&text=a" /></a>
+                <a href="#/a/gallery"><img src="http://placehold.it/80x80&text=a" /></a>
                 <a href="#/b"><img src="http://placehold.it/80x80&text=b" /></a>
                 <a href="#/c"><img src="http://placehold.it/80x80&text=c" /></a>
                 <a href="#/d"><img src="http://placehold.it/80x80&text=d" /></a>
@@ -68,14 +68,14 @@
 <script src="/components/jquery/jquery.min.js"></script>
 <script src="/js/main.js"></script>
 <script>
-    var img = $('.gallery figure img');
+    var img = $('.gallery figure img'),
+        pager_left = $('.pager.left');
 
-    router(function(letter, b) {
-        if (letter == 'gallery')
-            img.attr('src', 'http://placehold.it/300x300&text=' + b);
-
-        else if (letter)
+    router(function(letter, gallery) {
+        if (letter)
             img.attr('src', 'http://placehold.it/300x300&text=' + letter);
+
+        pager_left[gallery ? 'show' : 'hide']();
     }, true);
 
     $('.pager.bottom').hoverSlider({
