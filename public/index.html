@@ -30,14 +30,19 @@
             </figure>
 
             <div class="pager">
-                <a href="#/a"><img src="http://placehold.it/100x100&text=a" /></a>
-                <a href="#/b"><img src="http://placehold.it/100x100&text=b" /></a>
-                <a href="#/c"><img src="http://placehold.it/100x100&text=c" /></a>
-                <a href="#/d"><img src="http://placehold.it/100x100&text=d" /></a>
-                <a href="#/e"><img src="http://placehold.it/100x100&text=e" /></a>
-                <a href="#/f"><img src="http://placehold.it/100x100&text=f" /></a>
-                <a href="#/g"><img src="http://placehold.it/100x100&text=g" /></a>
-                <a href="#/h"><img src="http://placehold.it/100x100&text=h" /></a>
+                <a href="#/a"><img src="http://placehold.it/80x80&text=a" /></a>
+                <a href="#/b"><img src="http://placehold.it/80x80&text=b" /></a>
+                <a href="#/c"><img src="http://placehold.it/80x80&text=c" /></a>
+                <a href="#/d"><img src="http://placehold.it/80x80&text=d" /></a>
+                <a href="#/e"><img src="http://placehold.it/80x80&text=e" /></a>
+                <a href="#/f"><img src="http://placehold.it/80x80&text=f" /></a>
+                <a href="#/g"><img src="http://placehold.it/80x80&text=g" /></a>
+                <a href="#/g"><img src="http://placehold.it/80x80&text=g" /></a>
+                <a href="#/g"><img src="http://placehold.it/80x80&text=g" /></a>
+                <a href="#/g"><img src="http://placehold.it/80x80&text=g" /></a>
+                <a href="#/g"><img src="http://placehold.it/80x80&text=g" /></a>
+                <a href="#/irit"><img src="http://placehold.it/80x80&text=i" /></a>
+                <a href="#/etay"><img src="http://placehold.it/80x80&text=finish" /></a>
             </div>
         </div>
     </div>
@@ -51,7 +56,6 @@
 </footer>
 
 <script src="/components/jquery/jquery.min.js"></script>
-<script src="/components/bxslider-4/jquery.bxslider.min.js"></script>
 <script src="/js/main.js"></script>
 <script>
     var img = $('.gallery figure img');
@@ -60,7 +64,10 @@
             img.attr('src', 'http://placehold.it/300x300&text=' + letter)
     }, true);
 
-    $('.pager').bxSlider();
+    $('.pager').hoverSlider({
+        slideWidth: 90,
+        buffer: 50
+    });
 </script>
 
 </body>

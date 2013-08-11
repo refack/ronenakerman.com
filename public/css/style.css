@@ -1,3 +1,4 @@
+* { box-sizing: border-box; }
 body {
     margin: 0; padding: 40px;
     /*background: url(../img/debut_dark.png);*/
@@ -37,17 +38,26 @@ nav {
 
 .gallery {
     height: 100%;
+    position: relative;
 }
 .gallery figure {
     height: 80%;
 }
 .pager {
-    width: 100%; height: 20%;
-    margin: 0;
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 100px;
+    margin: 0; padding: 0 5px;
+    overflow-x: hidden;
 }
-/*.pager a img {*/
-    /*-webkit-transition: -webkit-transform .2s;*/
-/*}*/
-/*.pager a:hover img {*/
-    /*-webkit-transform: scale(1.2);*/
-/*}*/
+.pager a {
+    float: left;
+    padding: 10px 5px;
+}
+.pager a img {
+    -webkit-transition: -webkit-transform .2s,
+        box-shadow .2s;
+}
+.pager a:hover img {
+    -webkit-transform: scale(1.2);
+    box-shadow: 0 2px 5px black;
+}
