@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{config.title}</title>
+
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<div id="main" class="container">
+    <nav class="clearfix">
+        <h1>{config.title}</h1>
+        <ul class="nav navbar-nav">
+            {#nav}
+                <li><a href="{url}">{title}</a></li>
+            {/nav}
+        </ul>
+    </nav>
+
+    <div id="content">
+        <section class="middle hide">
+            <img src="http://placehold.it/250x350">
+        </section>
+
+        {+content/}
+    </div>
+</div>
+<footer class="container">
+    <p class="pull-right">
+        {!<a href="http://www.bardak.co.il" target="_blank">design by Bardak</a>,!}
+        <a href="http://empeeric.com" target="_blank">powered by Empeeric</a>
+    </p>
+    {config.credits|s}
+</footer>
+
+<script src="/components/jquery/jquery.min.js"></script>
+<script src="/js/main.js"></script>
+<script>
+    var img = $('.gallery figure img'),
+        pager_left = $('.pager.left');
+
+    router(function(letter, gallery) {
+        if (letter) {
+            img.attr('src', 'http://placehold.it/300x300&text=' + letter);
+            pager_left[gallery ? 'show' : 'hide']();
+        }
+    }, true);
+
+    $('.slider.bottom').hoverSlider({
+        slideSize: 90
+    });
+    $('.slider.left').hoverSlider({
+        slideSize: 90,
+        orientation: 'y'
+    });
+</script>
+
+</body>
+</html>

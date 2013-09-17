@@ -1,0 +1,44 @@
+{>layout/}
+
+{<content}
+<section class="content ">
+    <ul class="nav">
+        <li><h3>English</h3></li>
+        {#articles_en}
+            <li><a href="#" data-id="{_id}">{title}</a></li>
+        {/articles_en}
+    </ul>
+
+    <ul class="rtl" class="nav">
+        <li><h3>עברית</h3></li>
+        {#articles_he}
+            <li><a href="#" data-id="{_id}">{title}</a></li>
+        {/articles_he}
+    </ul>
+
+    <article>
+        {#articles_en}
+            <div id="{_id}" class="hide">
+                <h3>{title}</h3>
+                {content}
+            </div>
+        {/articles_en}
+        {#articles_he}
+            <div id="{_id}" class="hide rtl">
+                <h3>{title}</h3>
+                {content}
+            </div>
+        {/articles_he}
+    </article>
+</section>
+{/content}
+
+{<scripts}
+    <script>
+        $('article > :first-child').removeClass('hide');
+        $('.nav a').click(function() {
+            $($(this).data('id')).removeClass('hide')
+                .siblings().addClass('hide');
+        });
+    </script>
+{/scripts}

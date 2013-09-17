@@ -1,0 +1,25 @@
+{>layout/}
+
+{<content}
+<section class="gallery">
+    <figure>
+        <img src="http://placehold.it/300x300&text=a" />
+    </figure>
+
+    {!<div class="slider left">
+        <a href="#/what/gallery"><img src="http://placehold.it/80x80&text=what" /></a>
+    </div>!}
+
+    <div class="slider bottom">
+    {#images}
+        <a href="#" data-src=""><img src="http://placehold.it/80x80&text=a" /></a>
+    {/images}
+    </div>
+</section>
+{/content}
+
+{<scripts}
+    <script>
+
+    </script>
+{/scripts}

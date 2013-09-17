@@ -1,17 +1,20 @@
 var mongoose = require('mongoose'),
     Types = mongoose.Schema.Types;
 
+var Article = {
+    title: String,
+    content: Types.Html
+};
+
 var schema = new mongoose.Schema({
     url: { type: String, trim: true, lowercase: true, index: { unique: true }, label: 'URL' },
-//    template: { type: String, enum: require('../views/templates'), label: 'תבנית'},
-    title: { type: String, require: true, label: 'כותרת'},
-    menu_title: { type: String, label: 'כותרת בתפריט'},
+    title: { type: String, require: true },
 
-    text: { type: Types.Html, label: 'תוכן'},
-    pictures: [{ picture: { type: Types.Picture, label: 'תמונה'} }],
+    articles_he: [Article],
+    articles_en: [Article],
 
-    order: { type: Number, editable: false, label: 'סדר'},
-    show: { type: Boolean, 'default': true, label: 'הצגה'}
+    order: { type: Number, editable: false },
+    show: { type: Boolean, 'default': true }
 });
 
 schema.methods.toString = function(){
@@ -28,7 +31,6 @@ schema.pre('save', function(next) {
         url = '/' + url;
 
     this.url = url;
-    this.menu_title = this.menu_title || this.title;
     next();
 });
 

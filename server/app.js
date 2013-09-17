@@ -28,8 +28,8 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('aafa34nafksd'));
 app.use(express.cookieSession({ cookie: { maxAge: 86400 * 10}, key: app.get('site')}));
-app.use(app.router);
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(app.router);
 
 // development
 if ('development' == app.get('env')) {
@@ -37,7 +37,9 @@ if ('development' == app.get('env')) {
 }
 
 mongoose.connect(app.get('mongo'));
-require('formage-admin').init(app, express, require('./models'));
+require('formage').init(app, express, require('./models'), {
+    title: 'Ronen Akerman'
+});
 require('./routes')(app);
 
 http.createServer(app).listen(app.get('port'), function(){
