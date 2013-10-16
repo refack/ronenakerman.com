@@ -1,7 +1,7 @@
 {>layout/}
 
 {<content}
-<section class="middle hide">
+<section class="middle">
     <img src="http://placehold.it/250x350" />
 </section>
 {/content}

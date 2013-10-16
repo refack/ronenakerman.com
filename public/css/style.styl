@@ -29,8 +29,14 @@ body
   margin-bottom: 15px
   border-radius: radius
 
-footer, footer a
+footer
   color: link-color
+  a
+    color: @color
+    transition: color .3s
+    &:hover
+      color: white
+      text-decoration: none
 h1
   float: left
   margin: 5px 20px
@@ -46,7 +52,12 @@ nav
   font-weight: bold
   border-bottom: 1px solid #fefefe
   a
+    display: block
+    size: 100%
     color: link-color
+    transition: color .3s
+    &.active
+      text-transform: uppercase
 
 #content
   height: 530px
@@ -65,8 +76,10 @@ section
 // Gallery
 .gallery
   height: 100%
-  figure
-    @extend .middle
+  padding-top: 30px
+  .figure
+    /*@extend .middle*/
+    text-align: center
     height: 80%
 
 .slider

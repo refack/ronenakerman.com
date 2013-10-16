@@ -15,4 +15,6 @@ schema.statics.middleware = function(req, res, next) {
 };
 
 var model = module.exports = mongoose.model('config', schema);
-model.single = true;
+model.formage = {
+    is_single: true
+};

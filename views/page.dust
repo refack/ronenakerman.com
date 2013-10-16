@@ -1,7 +1,7 @@
 {>layout/}
 
 {<content}
-<section class="content ">
+<section class="content">
     <ul class="nav">
         <li><h3>English</h3></li>
         {#articles_en}

@@ -2,24 +2,39 @@
 
 {<content}
 <section class="gallery">
-    <figure>
-        <img src="http://placehold.it/300x300&text=a" />
-    </figure>
+    <div class="figure">
+    {#first}
+        <img src="{@picture width="700" height="380" crop="limit" /}" />
+        <p>{label}</p>
+    {/first}
+    </div>
 
     {!<div class="slider left">
         <a href="#/what/gallery"><img src="http://placehold.it/80x80&text=what" /></a>
     </div>!}
 
     <div class="slider bottom">
-    {#images}
-        <a href="#" data-src=""><img src="http://placehold.it/80x80&text=a" /></a>
-    {/images}
+    {#pictures}
+        <a href="#"
+            data-src="{@picture width="700" height="380" crop="limit" /}"
+            data-caption="{label}">
+            <img src="{@picture width="80" height="80" crop="fill" /}" />
+        </a>
+    {/pictures}
     </div>
 </section>
 {/content}
 
 {<scripts}
     <script>
+        var img = $('.figure img'),
+            caption = $('.figure p');
 
+        $('a[data-src]').click(function() {
+            var t = $(this);
+            img.attr('src', t.data('src'));
+            caption.text(t.data('caption'));
+            return false;
+        });
     </script>
 {/scripts}

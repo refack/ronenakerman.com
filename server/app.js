@@ -2,7 +2,10 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     mongoose = require('mongoose'),
-    stylus = require('stylus');
+    stylus = require('stylus'),
+    formage = require('formage');
+
+require('./dust');
 
 var app = express();
 
@@ -29,18 +32,19 @@ app.use(express.methodOverride());
 app.use(express.cookieParser('aafa34nafksd'));
 app.use(express.cookieSession({ cookie: { maxAge: 86400 * 10}, key: app.get('site')}));
 app.use(express.static(path.join(__dirname, '../public')));
+
+mongoose.connect(app.get('mongo'));
+formage.init(app, express, require('./models'), {
+    title: 'Ronen Akerman'
+});
+
 app.use(app.router);
+require('./routes')(app);
 
 // development
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+    app.use(express.errorHandler());
 }
-
-mongoose.connect(app.get('mongo'));
-require('formage').init(app, express, require('./models'), {
-    title: 'Ronen Akerman'
-});
-require('./routes')(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

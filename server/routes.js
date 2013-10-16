@@ -2,16 +2,25 @@ var models = require('./models'),
     _ = require('lodash');
 
 var nav = function(req, res, next) {
-    models.pages.find({ show: true })
-        .select('url title')
-        .sort('order')
-        .lean()
-        .exec(function(err, pages) {
-            if (err) return next(err);
+    var i = 0,
+        nav = {};
 
-            res.locals.nav = pages;
-            next();
-        });
+    ['pages', 'galleries'].forEach(function(name) {
+        models[name].find({ show: true })
+            .select('url title articles_he')
+            .sort('order')
+            .lean()
+            .exec(function(err, docs) {
+                nav[name] = docs;
+                nav.err = err;
+
+                if (++i < 2) return;
+                if (nav.err) return next(err);
+
+                res.locals.nav = nav.galleries.concat(nav.pages);
+                next();
+            });
+    });
 };
 
 module.exports = function(app) {
@@ -25,16 +34,19 @@ module.exports = function(app) {
     app.get('*', function(req, res, next) {
         var url = req.params[0],
             page = _.find(res.locals.nav, function(item) {
-                return item.url == url;
+                if (item.url == url)
+                    return item.current = true;
             });
-        console.log(url, res.locals.nav);
 
         if (!page)
-            return next(new Error('No such page! '+url));
+            return res.send(404);
 
         var type = page.articles_he ? 'pages' : 'galleries';
-        models[type].findById(page._id).lean().exec(function(err, doc) {
+        models[type].findById(page._id).lean().exec(function(err, page) {
             if (err) return next(err);
+
+            if (page.pictures)
+                page.first = page.pictures[0];
 
             res.render(type == 'pages' ? 'page' : 'gallery', {
                 page: page
