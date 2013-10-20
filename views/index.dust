@@ -2,6 +2,8 @@
 
 {<content}
 <section class="middle">
-    <img src="{@picture path="config" width="700" height="380" crop="limit" /}" />
+    {#config}
+        <img src="{@picture width="700" height="380" crop="limit" /}" />
+    {/config}
 </section>
 {/content}
