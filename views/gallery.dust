@@ -27,6 +27,25 @@
 
 {<scripts}
     <script>
+
+        /*var img = $('.gallery figure img'),
+ pager_left = $('.pager.left');
+
+ router(function(letter, gallery) {
+ if (letter) {
+ img.attr('src', 'http://placehold.it/300x300&text=' + letter);
+ pager_left[gallery ? 'show' : 'hide']();
+ }
+ }, true);*/
+
+        $('.slider.bottom').hoverSlider({
+            slideSize: 90
+        });
+        /*$('.slider.left').hoverSlider({
+            slideSize: 90,
+            orientation: 'y'
+        });*/
+
         var img = $('.figure img'),
             caption = $('.figure p');
 

@@ -2,6 +2,6 @@
 
 {<content}
 <section class="middle">
-    <img src="http://placehold.it/250x350" />
+    <img src="{@picture path="config" width="700" height="380" crop="limit" /}" />
 </section>
 {/content}

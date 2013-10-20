@@ -9,7 +9,7 @@
         {/articles_en}
     </ul>
 
-    <ul class="rtl" class="nav">
+    <ul class="rtl nav">
         <li><h3>עברית</h3></li>
         {#articles_he}
             <li><a href="#" data-id="{_id}">{title}</a></li>
@@ -20,13 +20,13 @@
         {#articles_en}
             <div id="{_id}" class="hide">
                 <h3>{title}</h3>
-                {content}
+                {content|s}
             </div>
         {/articles_en}
         {#articles_he}
             <div id="{_id}" class="hide rtl">
                 <h3>{title}</h3>
-                {content}
+                {content|s}
             </div>
         {/articles_he}
     </article>
@@ -34,11 +34,13 @@
 {/content}
 
 {<scripts}
-    <script>
-        $('article > :first-child').removeClass('hide');
-        $('.nav a').click(function() {
-            $($(this).data('id')).removeClass('hide')
-                .siblings().addClass('hide');
-        });
-    </script>
+<script>
+    $('article > :first-child').removeClass('hide');
+    $('.nav a').click(function() {
+        var id = $(this).data('id');
+        console.log(id, $('#'+id));
+        $('#'+id).removeClass('hide')
+            .siblings().addClass('hide');
+    });
+</script>
 {/scripts}

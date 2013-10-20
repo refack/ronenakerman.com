@@ -20,7 +20,7 @@
     </nav>
 
     <div id="content">
-        {#page}{+content/}{/page}
+        {#page}{+content/}{:else}{+content/}{/page}
     </div>
 </div>
 <footer class="container">
@@ -33,25 +33,6 @@
 
 <script src="/components/jquery/jquery.min.js"></script>
 <script src="/js/main.js"></script>
-<script>
-    /*var img = $('.gallery figure img'),
-        pager_left = $('.pager.left');
-
-    router(function(letter, gallery) {
-        if (letter) {
-            img.attr('src', 'http://placehold.it/300x300&text=' + letter);
-            pager_left[gallery ? 'show' : 'hide']();
-        }
-    }, true);*/
-
-    $('.slider.bottom').hoverSlider({
-        slideSize: 90
-    });
-    $('.slider.left').hoverSlider({
-        slideSize: 90,
-        orientation: 'y'
-    });
-</script>
 
 {+scripts/}
 
