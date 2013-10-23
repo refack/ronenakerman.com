@@ -11,7 +11,7 @@ var app = express();
 
 app.set('site', 'Ronen Akerman');
 app.set('port', process.env.PORT || 80);
-app.set('mongo', process.env.MONGOLAB_URI || 'mongodb://localhost/ronen-akerman');
+app.set('mongo', process.env.MONGOLAB_URI || 'mongodb://localhost/ronenakerman');
 app.set('cloudinary', process.env.CLOUDINARY_URL);
 
 app.engine('dust', require('consolidate').dust);

@@ -43,7 +43,7 @@ module.exports = function(app) {
 
         var type = page.articles_he ? 'pages' : 'galleries';
         models[type].findById(page._id).lean().exec(function(err, page) {
-            if (err) return next(err);
+            if (err || !page) return next(err);
 
             if (page.pictures)
                 page.first = page.pictures[0];

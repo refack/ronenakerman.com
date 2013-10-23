@@ -22,7 +22,7 @@ body
   background: #fefefe url(../img/debut_dark.png)
 
 .container
-  width: 800px
+  width: 820px
 #main
   background-radial: #f1f0ec #d7d7d7
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4)
@@ -39,25 +39,36 @@ footer
       text-decoration: none
 h1
   float: left
-  margin: 5px 20px
+  margin: 5px 10px
   padding: 0
   line-height: 50px
   background: url(../img/logo.png)
   font-size: 0
   width: 59px
   height: 40px
+  a
+    size: 100%
+    display block
 
 nav
-  padding: 5px
+  padding: 5px 0
   font-weight: bold
   border-bottom: 1px solid #fefefe
-  a
+  .navbar-nav a
     display: block
     size: 100%
     color: link-color
     transition: color .3s
+    margin: 18px 0
+    padding: 0 5px
+    line-height 1em
+    font-weight normal
+    border-right: 1px solid #383838
     &.active
-      text-transform: uppercase
+      color: #383838
+      font-weight: bold
+  li:last-child a
+      border-right: none
 
 #content
   height: 530px
