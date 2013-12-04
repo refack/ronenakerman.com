@@ -10,7 +10,7 @@
     "consolidate": "",
     "dustjs-linkedin": "",
     "cloudinary": "",
-    "formage": "2.2.15",
+    "formage": "~2.2.17",
     "mongoose": "3.8.x",
     "stylus": "",
     "nib": "",
