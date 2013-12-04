@@ -26,11 +26,10 @@ app.use(stylus.middleware({
     }
 }));
 
-app.use(express.favicon());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('aafa34nafksd'));
-app.use(express.cookieSession({ cookie: { maxAge: 86400 * 10}, key: app.get('site')}));
+app.use(express.cookieSession({ cookie: { maxAge: 60 * 60 * 24 * 10}, key: app.get('site')}));
 app.use(express.static(path.join(__dirname, '../public')));
 
 mongoose.connect(app.get('mongo'));
