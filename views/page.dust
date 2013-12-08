@@ -2,19 +2,23 @@
 
 {<content}
 <section class="content">
+    {?articles_en}
     <ul class="nav">
         <li><h3>English</h3></li>
         {#articles_en}
             <li><a href="#" data-id="{_id}">{title}</a></li>
         {/articles_en}
     </ul>
+    {/articles_en}
 
+    {?articles_he}
     <ul class="rtl nav">
         <li><h3>עברית</h3></li>
         {#articles_he}
             <li><a href="#" data-id="{_id}">{title}</a></li>
         {/articles_he}
     </ul>
+    {/articles_he}
 
     <article>
         {#articles_en}
@@ -31,6 +35,7 @@
         {/articles_he}
     </article>
 </section>
+{@contextDump /}
 {/content}
 
 {<scripts}
