@@ -8,6 +8,7 @@ var schema = new mongoose.Schema({
 
     pictures: [{
         picture: Types.Picture,
+        youtube: String,
         label: String
     }],
 

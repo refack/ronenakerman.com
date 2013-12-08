@@ -4,7 +4,8 @@
 <section class="gallery">
     <div class="figure">
     {#first}
-        <img src="{@picture width="700" height="380" crop="limit" /}" />
+        <img src="{@picture width="860" height="570" crop="limit" /}" />
+        <iframe id="theplayer" width="860" height="570" src="about:blank" frameborder="0" allowfullscreen></iframe>
         <p>{label}</p>
     {/first}
     </div>
@@ -16,9 +17,10 @@
     <div class="slider bottom">
     {#pictures}
         <a href="#"
-            data-src="{@picture width="700" height="380" crop="limit" /}"
+            data-src="{@picture width="860" height="570" crop="limit" /}"
+            data-youtube="{youtube}"
             data-caption="{label}">
-            <img src="{@picture width="80" height="80" crop="fill" /}" />
+            <img width=80 height=80 src="{?youtube}http://img.youtube.com/vi/{youtube}/0.jpg{:else}{@picture width="80" height="80" crop="fill" /}{/youtube}" />
         </a>
     {/pictures}
     </div>
@@ -47,13 +49,23 @@
         });*/
 
         var img = $('.figure img'),
-            caption = $('.figure p');
+            caption = $('.figure p'),
+            theplayer = $('#theplayer');
 
-        $('a[data-src]').click(function() {
+        $('a[data-src]').click(function(e) {
+            e.preventDefault();
             var t = $(this);
-            img.attr('src', t.data('src'));
+            var youtube = t.data('youtube');
+            if (youtube) {
+                img.hide();
+                theplayer.attr('src', '//www.youtube.com/embed/' + youtube)
+                theplayer.show();
+            } else {
+                theplayer.hide();
+                img.attr('src', t.data('src'));
+                img.show();
+            }
             caption.text(t.data('caption'));
-            return false;
         });
     </script>
 {/scripts}
