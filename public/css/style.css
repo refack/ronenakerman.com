@@ -11,7 +11,8 @@ body {
   padding: 60px;
 }
 .container {
-  width: 820px;
+  width: 960px;
+  max-width: 940px;
 }
 #main {
   background: #f1f0ec;
@@ -100,7 +101,7 @@ nav li:last-child a {
   border-right: none;
 }
 #content {
-  height: 530px;
+  height: 730px;
 }
 .middle {
   height: 100%;
