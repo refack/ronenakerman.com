@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 var schema = new mongoose.Schema({
     url: { type: String, trim: true, lowercase: true, index: { unique: true }, label: 'URL' },
     title: { type: String, require: true },
+    background: Types.Picture,
 
     pictures: [{
         picture: Types.Picture,
@@ -30,5 +31,9 @@ schema.pre('save', function(next) {
     this.url = url;
     next();
 });
+
+schema.formage = {
+    sortable: 'order'
+};
 
 module.exports = mongoose.model('galleries', schema);

@@ -34,4 +34,8 @@ schema.pre('save', function(next) {
     next();
 });
 
+schema.formage = {
+    sortable: 'order'
+};
+
 module.exports = mongoose.model('pages', schema);
