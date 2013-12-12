@@ -5,7 +5,7 @@
     <div class="figure">
     {#first}
         <img src="{@picture width="860" height="570" crop="limit" /}" />
-        <iframe id="theplayer" width="860" height="570" src="about:blank" frameborder="0" allowfullscreen></iframe>
+        <iframe id="theplayer" width="860" height="570" src="about:blank" frameborder="0" allowfullscreen style="border:0;display:none;"></iframe>
         <p>{label}</p>
     {/first}
     </div>
