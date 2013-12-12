@@ -24,29 +24,31 @@
         </a>
     {/pictures}
     </div>
+
+    <div class="slider left" style="left: 0; top: 0; width: 100px; height: 87%; overflow-x: hidden; overflow-y: hidden; ">
+    {#pictures}
+        <a href="#"
+            data-src="{@picture width="860" height="570" crop="limit" /}"
+            data-youtube="{youtube}"
+            data-caption="{label}">
+            <img width=80 height=80 src="{?youtube}http://img.youtube.com/vi/{youtube}/0.jpg{:else}{@picture width="80" height="80" crop="fill" /}{/youtube}" />
+        </a>
+    {/pictures}
+    </div>
+
 </section>
 {/content}
 
 {<scripts}
     <script>
 
-        /*var img = $('.gallery figure img'),
- pager_left = $('.pager.left');
-
- router(function(letter, gallery) {
- if (letter) {
- img.attr('src', 'http://placehold.it/300x300&text=' + letter);
- pager_left[gallery ? 'show' : 'hide']();
- }
- }, true);*/
-
         $('.slider.bottom').hoverSlider({
             slideSize: 90
         });
-        /*$('.slider.left').hoverSlider({
+        $('.slider.left').hoverSlider({
             slideSize: 90,
             orientation: 'y'
-        });*/
+        });
 
         var img = $('.figure img'),
             caption = $('.figure p'),
@@ -58,7 +60,7 @@
             var youtube = t.data('youtube');
             if (youtube) {
                 img.hide();
-                theplayer.attr('src', '//www.youtube.com/embed/' + youtube)
+                theplayer.attr('src', '//www.youtube.com/embed/' + youtube);
                 theplayer.show();
             } else {
                 theplayer.hide();
