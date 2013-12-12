@@ -1,7 +1,7 @@
 {>layout/}
 
 {<content}
-<section class="gallery">
+<section class="gallery" {?background}style="background: url('{background.url}') no-repeat;{/background}">
     <div class="figure">
     {#first}
         <img src="{@picture width="860" height="570" crop="limit" /}" />
