@@ -39,11 +39,11 @@ module.exports = function(app) {
             });
 
         if (!page)
-            return res.send(404);
+            return res.redirect('/');
 
         var type = page.articles_he ? 'pages' : 'galleries';
         models[type].findById(page._id).lean().exec(function(err, page) {
-            if (err || !page) return next(err);
+            if (err || !page) return res.redirect('/');
 
             if (page.pictures)
                 page.first = page.pictures[0];
