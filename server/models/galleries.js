@@ -9,8 +9,14 @@ var schema = new mongoose.Schema({
     pictures: [{
         picture: Types.Picture,
         youtube: String,
-        label: String
+        label: String,
+        sub_gallery: [{
+            picture: Types.Picture,
+            youtube: String,
+            label: String
+        }]
     }],
+
 
     order: { type: Number, editable: false },
     show: { type: Boolean, 'default': true }

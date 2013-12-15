@@ -1,60 +1,61 @@
 {>layout/}
 
 {<content}
-<section class="gallery" {?background}style="background: url('{background.url}') no-repeat;{/background}">
-    <div class="figure">
-    {#first}
-        <img src="{@picture width="860" height="570" crop="limit" /}" />
-        <iframe id="theplayer" width="860" height="570" src="about:blank" frameborder="0" allowfullscreen style="border:0;display:none;"></iframe>
-        <p>{label}</p>
-    {/first}
-    </div>
+    <section class="gallery" {?background}style="background: url('{background.url}') no-repeat;{/background}">
+        <div class="figure">
+            {#first}
+                <img src="{@picture width="860" height="570" crop="limit" /}"/>
+                <iframe id="theplayer" width="860" height="570" src="about:blank" frameborder="0" allowfullscreen
+                        style="border:0;display:none;"></iframe>
+                <p>{label}</p>
+            {/first}
+        </div>
 
-    {!<div class="slider left">
-        <a href="#/what/gallery"><img src="http://placehold.it/80x80&text=what" /></a>
-    </div>!}
+        {!<div class="slider left">
+            <a href="#/what/gallery"><img src="http://placehold.it/80x80&text=what" /></a>
+        </div>!}
 
-    <div class="slider bottom">
-    {#pictures}
-        <a href="#"
-            data-src="{@picture width="860" height="570" crop="limit" /}"
-            data-youtube="{youtube}"
-            data-caption="{label}">
-            <img width=80 height=80 src="{?youtube}http://img.youtube.com/vi/{youtube}/0.jpg{:else}{@picture width="80" height="80" crop="fill" /}{/youtube}" />
-        </a>
-    {/pictures}
-    </div>
+        <div class="slider bottom">
+            {#pictures}
+                <a href="#"
+                   data-src="{@picture width="860" height="570" crop="limit" /}"
+                   data-youtube="{youtube}"
+                   data-caption="{label}"
+                   {?sub_gallery}data-sub="{sub_gallery|js}"{/sub_gallery}>
+                    <img width=80 height=80 {?youtube}style="background: url('http://img.youtube.com/vi/{youtube}/1.jpg') -20px 0"{/youtube}
+                         src="{?youtube}/img/play.png{:else}{@picture width="80" height="80" crop="fill" /}{/youtube}"/>
+                </a>
+            {/pictures}
+        </div>
 
-    <div class="slider left" style="left: 0; top: 0; width: 100px; height: 87%; overflow-x: hidden; overflow-y: hidden; ">
-    {#pictures}
-        <a href="#"
-            data-src="{@picture width="860" height="570" crop="limit" /}"
-            data-youtube="{youtube}"
-            data-caption="{label}">
-            <img width=80 height=80 src="{?youtube}http://img.youtube.com/vi/{youtube}/0.jpg{:else}{@picture width="80" height="80" crop="fill" /}{/youtube}" />
-        </a>
-    {/pictures}
-    </div>
+        <div class="slider left"
+             style="left: 0; top: 0; width: 100px; height: 87%; overflow-x: hidden; overflow-y: hidden; display:none">
+            <a href="#" style="display:none">
+                <img width=80 height=80 src="about:blank"/>
+            </a>
+        </div>
 
-</section>
+    </section>
 {/content}
 
 {<scripts}
     <script>
 
-        $('.slider.bottom').hoverSlider({
+        var $sliderBottom = $('.slider.bottom');
+        $sliderBottom.hoverSlider({
             slideSize: 90
         });
-        $('.slider.left').hoverSlider({
+        var $sliderLeft = $('.slider.left');
+        $sliderLeft.hoverSlider({
             slideSize: 90,
             orientation: 'y'
         });
 
         var img = $('.figure img'),
-            caption = $('.figure p'),
-            theplayer = $('#theplayer');
+                caption = $('.figure p'),
+                theplayer = $('#theplayer');
 
-        $('a[data-src]').click(function(e) {
+        $('a[data-src]').on('click', function (e) {
             e.preventDefault();
             var t = $(this);
             var youtube = t.data('youtube');
@@ -68,6 +69,29 @@
                 img.show();
             }
             caption.text(t.data('caption'));
+
+            var subData = t.data('sub');
+            if (!subData || subData.length === 0) {
+                $sliderLeft.hide();
+                return;
+            }
+
+            var tmbnlPrefix = t.find('img').attr('src').split('/').slice(0, -1).join('/');
+            var fullsizePrefix = t.data('src').split('/').slice(0, -1).join('/');
+            $sliderLeft.empty();
+            subData.forEach(function (item) {
+                var stub = $('<a href="#"><img width=80 height=80 src="about:blank"/></a>');
+                var tmb = stub.find('img');
+                if (item.picture && item.picture.url) {
+                    var filename = item.picture.url.split('/').pop();
+                    tmb.attr('src', [tmbnlPrefix,filename].join('/'));
+                    stub.data('src', [fullsizePrefix,filename].join('/'));
+                }
+                stub.data('youtube', item.youtube);
+                stub.data('src', item.label);
+                $sliderLeft.append(stub);
+            });
+            $sliderLeft.slideDown();
         });
     </script>
 {/scripts}
