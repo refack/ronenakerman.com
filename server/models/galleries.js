@@ -10,7 +10,7 @@ var schema = new mongoose.Schema({
         picture: Types.Picture,
         youtube: String,
         label: String,
-        sub_gallery: [{
+        gallery: [{
             picture: Types.Picture,
             youtube: String,
             label: String
