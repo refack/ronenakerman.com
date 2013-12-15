@@ -15,24 +15,32 @@
             <a href="#/what/gallery"><img src="http://placehold.it/80x80&text=what" /></a>
         </div>!}
 
-        <div class="slider bottom">
-            {#pictures}
-                <a href="#"
-                   data-src="{@picture width="860" height="570" crop="limit" /}"
-                   data-youtube="{youtube}"
-                   data-caption="{label}"
-                   {?sub_gallery}data-sub="{sub_gallery|js}"{/sub_gallery}>
-                    <img width=80 height=80 {?youtube}style="background: url('http://img.youtube.com/vi/{youtube}/1.jpg') -20px 0"{/youtube}
-                         src="{?youtube}/img/play.png{:else}{@picture width="80" height="80" crop="fill" /}{/youtube}"/>
-                </a>
-            {/pictures}
+        <div id="tS2" class="slider bottom jThumbnailScroller">
+            <div class="jTscrollerContainer">
+                <div class="jTscroller">
+                    {#pictures}
+                        <a href="#"
+                           data-src="{@picture width="860" height="570" crop="limit" /}"
+                           data-youtube="{youtube}"
+                           data-caption="{label}"
+                           {?sub_gallery}data-sub="{sub_gallery|js}"{/sub_gallery}>
+                            <img width=80 height=80
+                                 {?youtube}style="background: url('http://img.youtube.com/vi/{youtube}/1.jpg') -20px 0"{/youtube}
+                                 src="{?youtube}/img/play.png{:else}{@picture width="80" height="80" crop="fill" /}{/youtube}"/>
+                        </a>
+                    {/pictures}
+                </div>
+            </div>
         </div>
 
-        <div class="slider left"
-             style="left: 0; top: 0; width: 100px; height: 87%; overflow-x: hidden; overflow-y: hidden; display:none">
-            <a href="#" style="display:none">
-                <img width=80 height=80 src="about:blank"/>
-            </a>
+        <div id="tS3" class="slider left jThumbnailScroller">
+            <div class="jTscrollerContainer">
+                <div class="jTscroller" style="display:none">
+                    <a href="#" style="display:none">
+                        <img width=80 height=80 src="about:blank"/>
+                    </a>
+                </div>
+            </div>
         </div>
 
     </section>
@@ -42,13 +50,35 @@
     <script>
 
         var $sliderBottom = $('.slider.bottom');
-        $sliderBottom.hoverSlider({
-            slideSize: 90
+        $sliderBottom.thumbnailScroller({
+            scrollerType: "hoverAccelerate",
+            scrollerOrientation: "horizontal",
+            scrollSpeed: 1,
+            scrollEasing: "easeOutCirc",
+            scrollEasingAmount: 600,
+            acceleration: 4,
+            scrollSpeed: 800,
+            noScrollCenterSpace: 10,
+            autoScrolling: 0,
+            autoScrollingSpeed: 2000,
+            autoScrollingEasing: "easeInOutQuad",
+            autoScrollingDelay: 500
         });
+
         var $sliderLeft = $('.slider.left');
-        $sliderLeft.hoverSlider({
-            slideSize: 90,
-            orientation: 'y'
+        $sliderLeft.thumbnailScroller({
+            scrollerType: "hoverAccelerate",
+            scrollerOrientation: "vertical",
+            scrollSpeed: 1,
+            scrollEasing: "easeOutCirc",
+            scrollEasingAmount: 600,
+            acceleration: 4,
+            scrollSpeed: 800,
+            noScrollCenterSpace: 10,
+            autoScrolling: 0,
+            autoScrollingSpeed: 2000,
+            autoScrollingEasing: "easeInOutQuad",
+            autoScrollingDelay: 500
         });
 
         var img = $('.figure img'),
@@ -84,8 +114,8 @@
                 var tmb = stub.find('img');
                 if (item.picture && item.picture.url) {
                     var filename = item.picture.url.split('/').pop();
-                    tmb.attr('src', [tmbnlPrefix,filename].join('/'));
-                    stub.data('src', [fullsizePrefix,filename].join('/'));
+                    tmb.attr('src', [tmbnlPrefix, filename].join('/'));
+                    stub.data('src', [fullsizePrefix, filename].join('/'));
                 }
                 stub.data('youtube', item.youtube);
                 stub.data('src', item.label);

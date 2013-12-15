@@ -5,6 +5,7 @@
     <title>{config.title}</title>
 
     <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/jquery.thumbnailScroller.css" />
     <link rel="stylesheet" href="/css/style.css" />
 
     <script>
@@ -43,7 +44,8 @@
 </footer>
 
 <script src="/components/jquery/jquery.min.js"></script>
-<script src="/js/main.js"></script>
+<script src="/components/jquery-ui-1.8.13.custom.min.js"></script>
+<script src="/components/jquery.thumbnailScroller.js"></script>
 
 {+scripts/}
 
