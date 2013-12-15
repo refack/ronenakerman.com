@@ -23,7 +23,7 @@
                            data-src="{@picture width="860" height="570" crop="limit" /}"
                            data-youtube="{youtube}"
                            data-caption="{label}"
-                           {?sub_gallery}data-sub="{sub_gallery|js}"{/sub_gallery}>
+                           {?gallery}data-sub="{gallery|js}"{/gallery}>
                             <img width=80 height=80
                                  {?youtube}style="background: url('http://img.youtube.com/vi/{youtube}/1.jpg') -20px 0"{/youtube}
                                  src="{?youtube}/img/play.png{:else}{@picture width="80" height="80" crop="fill" /}{/youtube}"/>
@@ -33,10 +33,10 @@
             </div>
         </div>
 
-        <div id="tS3" class="slider left jThumbnailScroller">
+        <div id="tS3" class="slider left jThumbnailScroller" style="display:none">
             <div class="jTscrollerContainer">
-                <div class="jTscroller" style="display:none">
-                    <a href="#" style="display:none">
+                <div class="jTscroller">
+                    <a href="#">
                         <img width=80 height=80 src="about:blank"/>
                     </a>
                 </div>
@@ -49,37 +49,13 @@
 {<scripts}
     <script>
 
-        var $sliderBottom = $('.slider.bottom');
-        $sliderBottom.thumbnailScroller({
+        var $sliderBottom = $('.slider.bottom').thumbnailScroller({
             scrollerType: "hoverAccelerate",
-            scrollerOrientation: "horizontal",
-            scrollSpeed: 1,
-            scrollEasing: "easeOutCirc",
-            scrollEasingAmount: 600,
-            acceleration: 4,
-            scrollSpeed: 800,
-            noScrollCenterSpace: 10,
-            autoScrolling: 0,
-            autoScrollingSpeed: 2000,
-            autoScrollingEasing: "easeInOutQuad",
-            autoScrollingDelay: 500
+            scrollerOrientation: "horizontal"
         });
 
         var $sliderLeft = $('.slider.left');
-        $sliderLeft.thumbnailScroller({
-            scrollerType: "hoverAccelerate",
-            scrollerOrientation: "vertical",
-            scrollSpeed: 1,
-            scrollEasing: "easeOutCirc",
-            scrollEasingAmount: 600,
-            acceleration: 4,
-            scrollSpeed: 800,
-            noScrollCenterSpace: 10,
-            autoScrolling: 0,
-            autoScrollingSpeed: 2000,
-            autoScrollingEasing: "easeInOutQuad",
-            autoScrollingDelay: 500
-        });
+        var $leftInner = $sliderLeft.find('.jTscroller');
 
         var img = $('.figure img'),
                 caption = $('.figure p'),
@@ -108,7 +84,7 @@
 
             var tmbnlPrefix = t.find('img').attr('src').split('/').slice(0, -1).join('/');
             var fullsizePrefix = t.data('src').split('/').slice(0, -1).join('/');
-            $sliderLeft.empty();
+            $leftInner.empty();
             subData.forEach(function (item) {
                 var stub = $('<a href="#"><img width=80 height=80 src="about:blank"/></a>');
                 var tmb = stub.find('img');
@@ -119,9 +95,13 @@
                 }
                 stub.data('youtube', item.youtube);
                 stub.data('src', item.label);
-                $sliderLeft.append(stub);
+                $leftInner.append(stub);
             });
-            $sliderLeft.slideDown();
+            $sliderLeft.show().thumbnailScroller({
+                scrollerType: "hoverAccelerate",
+                scrollerOrientation: "vertical"
+            });
+
         });
     </script>
 {/scripts}

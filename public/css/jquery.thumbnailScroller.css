@@ -79,14 +79,11 @@ scrollers styling
 /* a vertical scroller */
 .jThumbnailScroller#tS3 .jTscroller {
     height: auto;
-    margin-bottom: 40px;
+    width: 90px;
 }
 
 .jThumbnailScroller#tS3 .jTscroller a {
     display: block;
-    margin: 0 6px 10px 6px;
-    width: 100px;
-    overflow: hidden;
     opacity: 0.7;
 }
 
@@ -95,7 +92,7 @@ scrollers styling
 }
 
 .jThumbnailScroller#tS3 .jTscroller a:first-child {
-    margin-top: 50px;
+    margin: 10px 0 0 0;
 }
 
 .jThumbnailScroller#tS3 .jTscrollerNextButton {
