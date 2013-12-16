@@ -20,6 +20,7 @@
                 <div class="jTscroller">
                     {#pictures}
                         <a href="#"
+                           class="thumbnailer"
                            data-src="{@picture width="860" height="570" crop="limit" /}"
                            data-youtube="{youtube}"
                            data-caption="{label}"
@@ -36,9 +37,6 @@
         <div id="tS3" class="slider left jThumbnailScroller" style="display:none">
             <div class="jTscrollerContainer">
                 <div class="jTscroller">
-                    <a href="#">
-                        <img width=80 height=80 src="about:blank"/>
-                    </a>
                 </div>
             </div>
         </div>
@@ -48,20 +46,7 @@
 
 {<scripts}
     <script>
-
-        var $sliderBottom = $('.slider.bottom').thumbnailScroller({
-            scrollerType: "hoverAccelerate",
-            scrollerOrientation: "horizontal"
-        });
-
-        var $sliderLeft = $('.slider.left');
-        var $leftInner = $sliderLeft.find('.jTscroller');
-
-        var img = $('.figure img'),
-                caption = $('.figure p'),
-                theplayer = $('#theplayer');
-
-        $('a[data-src]').on('click', function (e) {
+        function showFromThumbnail(e) {
             e.preventDefault();
             var t = $(this);
             var youtube = t.data('youtube');
@@ -75,18 +60,28 @@
                 img.show();
             }
             caption.text(t.data('caption'));
+            return t;
+        }
 
+        var img = $('.figure img'),
+                caption = $('.figure p'),
+                theplayer = $('#theplayer'),
+                $sliderBottom = $('.slider.bottom').thumbnailScroller({scrollerType: "hoverAccelerate", noScrollCenterSpace: 80}),
+                $sliderLeft = $('.slider.left'),
+                $leftInner = $sliderLeft.find('.jTscroller');
+
+        $('a.thumbnailer').on('click', function maybeGalleryClick(e) {
+            var t = showFromThumbnail.call(this, e);
             var subData = t.data('sub');
             if (!subData || subData.length === 0) {
                 $sliderLeft.hide();
                 return;
             }
-
             var tmbnlPrefix = t.find('img').attr('src').split('/').slice(0, -1).join('/');
             var fullsizePrefix = t.data('src').split('/').slice(0, -1).join('/');
             $leftInner.empty();
             subData.forEach(function (item) {
-                var stub = $('<a href="#"><img width=80 height=80 src="about:blank"/></a>');
+                var stub = $('<a href="#" class="thumbnailer"><img width=80 height=80 src="about:blank"/></a>');
                 var tmb = stub.find('img');
                 if (item.picture && item.picture.url) {
                     var filename = item.picture.url.split('/').pop();
@@ -94,12 +89,14 @@
                     stub.data('src', [fullsizePrefix, filename].join('/'));
                 }
                 stub.data('youtube', item.youtube);
-                stub.data('src', item.label);
+                stub.data('caption', item.label);
+                stub.click(showFromThumbnail);
                 $leftInner.append(stub);
             });
             $sliderLeft.show().thumbnailScroller({
                 scrollerType: "hoverAccelerate",
-                scrollerOrientation: "vertical"
+                scrollerOrientation: "vertical",
+                noScrollCenterSpace: 80
             });
 
         });
