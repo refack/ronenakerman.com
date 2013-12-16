@@ -141,13 +141,9 @@ section {
 }
 .slider {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
   margin: 0;
   padding: 5px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 .slider a {
   float: left;
@@ -167,12 +163,17 @@ section {
   -ms-transform: scale(1.2);
   transform: scale(1.2);
 }
+.slider.bottom {
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  width: 930px;
+}
 .slider.left {
   left: 0;
   top: 0;
   width: 100px;
   height: 83%;
-  overflow-y: hidden;
 }
 .content {
   padding: 20px 150px;

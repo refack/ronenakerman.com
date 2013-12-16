@@ -80,6 +80,8 @@
             var tmbnlPrefix = t.find('img').attr('src').split('/').slice(0, -1).join('/');
             var fullsizePrefix = t.data('src').split('/').slice(0, -1).join('/');
             $leftInner.empty();
+            $sliderLeft.unbind();
+            $sliderLeft.find('.jTscroller').css('top', 0);
             subData.forEach(function (item) {
                 var stub = $('<a href="#" class="thumbnailer"><img width=80 height=80 src="about:blank"/></a>');
                 var tmb = stub.find('img');

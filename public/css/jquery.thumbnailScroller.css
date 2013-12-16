@@ -56,6 +56,11 @@ scrollers styling
 
 /* different styled scrollers */
 /* liquid width scroller */
+.jThumbnailScroller#tS2 .jTscrollerContainer {
+    position: relative;
+    margin: 0 auto;
+}
+
 .jThumbnailScroller#tS2 .jTscroller a {
     opacity: 0.9;
 }
