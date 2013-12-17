@@ -80,6 +80,7 @@ nav
   justify-content: center
   align-items: center
   text-align: center
+  flex-direction: column
 
 section
   size: 100%
@@ -96,13 +97,9 @@ section
 
 .slider
   position: absolute
-  bottom: 0
-  left: 0
-  width: 100%
-  height: 100px
   margin: 0
   padding: 5px
-  overflow-x: hidden
+  overflow: hidden
   a
     float: left
     padding: 5px
@@ -116,7 +113,11 @@ section
     top: 0
     width: 100px
     height: 83%
-    overflow-y: hidden
+  &.bottom
+    bottom: 0
+    left: 0
+    height: 100px
+    width: 930px
 
 // Pages
 .content

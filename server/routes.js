@@ -28,6 +28,7 @@ module.exports = function(app) {
     app.get('*', models.config.middleware, nav);
 
     app.get('/', function(req, res) {
+        res.locals.picture = _.sample(res.locals.config.homepage_pictures, 1)[0];
         res.render('index');
     });
 

@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 var schema = new mongoose.Schema({
     title: { type: String, required: true },
     email: { type: String, required: true },
-    picture: { type: Types.Picture },
+    homepage_pictures: [Types.Picture],
     credits: String
 });
 

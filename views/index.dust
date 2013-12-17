@@ -2,8 +2,8 @@
 
 {<content}
 <section class="middle">
-    {#config}
-        <img src="{@picture width="700" height="380" crop="limit" /}" />
-    {/config}
+    <img src="{@picture width="700" height="380" crop="limit" /}" />
+    <br style="clear:both" />
+    <img src="/img/caption.png" />
 </section>
 {/content}
