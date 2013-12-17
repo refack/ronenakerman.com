@@ -34,6 +34,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 mongoose.connect(app.get('mongo'));
 formage.init(app, express, require('./models'), {
+    username: 'ronen',
+    password: 'lialia45',
     title: 'Ronen Akerman'
 });
 
