@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=960, maximum-scale=1.0" />
     <title>{config.title}</title>
 
     <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" />
