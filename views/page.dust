@@ -46,7 +46,7 @@
         if (!state) return $(first).removeClass('hide');
         return $('#'+state.id).removeClass('hide').siblings().addClass('hide');
     };
-    $('.nav a').click(function (e) {
+    $('.content ul > li > a').click(function (e) {
         e.preventDefault();
         var $this = $(this);
         var state = {label: $this.text(), id: $this.data('id')};
