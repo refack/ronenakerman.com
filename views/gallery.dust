@@ -19,7 +19,7 @@
             <div class="jTscrollerContainer">
                 <div class="jTscroller">
                     {#pictures}
-                        <a href="#"
+                        <a href="{label}"
                            class="thumbnailer"
                            data-src="{@picture width="860" height="570" crop="limit" /}"
                            data-youtube="{youtube}"
@@ -95,7 +95,8 @@
             $sliderLeft.unbind();
             $sliderLeft.find('.jTscroller').css('top', 0);
             subData.forEach(function (item) {
-                var stub = $('<a href="#" class="thumbnailer"><img width=80 height=80 src="about:blank"/></a>');
+                var stub = $('<a class="thumbnailer"><img width=80 height=80 src="about:blank"/></a>');
+                stub.attr('href', item.label)
                 var tmb = stub.find('img');
                 if (item.picture && item.picture.url) {
                     var filename = item.picture.url.split('/').pop();
