@@ -49,6 +49,7 @@
         var baseUrl = '/' + location.pathname.split('/')[1];
         window.onpopstate = function (e) {
             var state = e.state;
+            if (!state) return;
             if (state.youtube) {
                 img.hide();
                 theplayer.attr('src', '//www.youtube.com/embed/' + state.youtube);
@@ -62,6 +63,7 @@
         };
 
         function showFromThumbnail(e) {
+            if (e.button != 0) return;
             e.preventDefault();
             var t = $(this);
             var state = {youtube: t.data('youtube'), src: t.data('src'), label: t.data('label')};
@@ -83,6 +85,7 @@
                 $leftInner = $sliderLeft.find('.jTscroller');
 
         $('a.thumbnailer').on('click', function maybeGalleryClick(e) {
+            if (e.button != 0) return;
             var t = showFromThumbnail.call(this, e);
             var subData = t.data('sub');
             if (!subData || subData.length === 0) {
