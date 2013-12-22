@@ -68,9 +68,9 @@
                 theplayer = $('#theplayer'),
                 $sliderBottom = $('.slider.bottom').thumbnailScroller({
                     scrollerType: "hoverAccelerate",
-                    noScrollCenterSpace: 180,
+                    noScrollCenterSpace: 120,
                     acceleration:4,
-                    scrollSpeed:200
+                    scrollSpeed:1200
                 }),
                 $sliderLeft = $('.slider.left'),
                 $leftInner = $sliderLeft.find('.jTscroller');
