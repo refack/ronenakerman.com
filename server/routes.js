@@ -32,26 +32,26 @@ module.exports = function(app) {
         res.render('index');
     });
 
-    app.get('*', function(req, res, next) {
-        var url = req.params[0],
-            page = _.find(res.locals.nav, function(item) {
-                if (item.url == url)
-                    return item.current = true;
-            });
+    app.get('/:page?/:label?', function(req, res, next) {
+        var url = req.params.page,
+            label = req.params.label,
+            page = _.find(res.locals.nav, {url: url});
 
         if (!page)
             return res.redirect('/');
+        page.current = true;
 
         var type = page.articles_he ? 'pages' : 'galleries';
         models[type].findById(page._id).lean().exec(function(err, page) {
-            if (err || !page) return res.redirect('/');
+            if (err) return res.redirect('/');
 
             if (page.pictures)
-                page.first = page.pictures[0];
+                page.first = _.find(page.pictures, {label: label}) || page.pictures[0];
 
-            res.render(type == 'pages' ? 'page' : 'gallery', {
-                page: page
-            });
+            if (page.articles_he || page.articles_en)
+                page.first = _.find(page.articles_he, {title: label}) || _.find(page.articles_en, {title: label});
+
+            return res.render(type == 'pages' ? 'page' : 'gallery', {page: page});
         });
     });
 

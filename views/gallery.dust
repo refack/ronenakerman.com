@@ -23,7 +23,7 @@
                            class="thumbnailer"
                            data-src="{@picture width="860" height="570" crop="limit" /}"
                            data-youtube="{youtube}"
-                           data-caption="{label}"
+                           data-label="{label}"
                            {?gallery}data-sub="{gallery|js}"{/gallery}>
                             <img width=80 height=80
                                  {?youtube}style="background: url('http://img.youtube.com/vi/{youtube}/1.jpg') -20px 0"{/youtube}
@@ -46,20 +46,27 @@
 
 {<scripts}
     <script>
-        function showFromThumbnail(e) {
-            e.preventDefault();
-            var t = $(this);
-            var youtube = t.data('youtube');
-            if (youtube) {
+        var baseUrl = '/' + location.pathname.split('/')[1];
+        window.onpopstate = function (e) {
+            var state = e.state;
+            if (state.youtube) {
                 img.hide();
-                theplayer.attr('src', '//www.youtube.com/embed/' + youtube);
+                theplayer.attr('src', '//www.youtube.com/embed/' + state.youtube);
                 theplayer.show();
             } else {
                 theplayer.hide();
-                img.attr('src', t.data('src'));
+                img.attr('src', state.src);
                 img.show();
             }
-            caption.text(t.data('caption'));
+            caption.text(state.label);
+        };
+
+        function showFromThumbnail(e) {
+            e.preventDefault();
+            var t = $(this);
+            var state = {youtube: t.data('youtube'), src: t.data('src'), label: t.data('label')};
+            history.pushState(state, state.label, baseUrl + '/' + state.label);
+            window.onpopstate({state: state});
             return t;
         }
 
@@ -68,9 +75,9 @@
                 theplayer = $('#theplayer'),
                 $sliderBottom = $('.slider.bottom').thumbnailScroller({
                     scrollerType: "hoverAccelerate",
-                    noScrollCenterSpace: 120,
-                    acceleration:4,
-                    scrollSpeed:1200
+                    noScrollCenterSpace: 200,
+                    acceleration: 4,
+                    scrollSpeed: 1600
                 }),
                 $sliderLeft = $('.slider.left'),
                 $leftInner = $sliderLeft.find('.jTscroller');
@@ -96,14 +103,16 @@
                     stub.data('src', [fullsizePrefix, filename].join('/'));
                 }
                 stub.data('youtube', item.youtube);
-                stub.data('caption', item.label);
+                stub.data('label', item.label);
                 stub.click(showFromThumbnail);
                 $leftInner.append(stub);
             });
             $sliderLeft.show().thumbnailScroller({
                 scrollerType: "hoverAccelerate",
                 scrollerOrientation: "vertical",
-                noScrollCenterSpace: 80
+                noScrollCenterSpace: 160,
+                acceleration: 4,
+                scrollSpeed: 1600
             });
 
         });
