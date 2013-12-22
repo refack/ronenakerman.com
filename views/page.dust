@@ -6,7 +6,7 @@
     <ul class="nav">
         {?articles_he}<li><h3>English</h3></li>{/articles_he}
         {#articles_en}
-            <li><a href="{title}" data-id="{_id}">{title}</a></li>
+            <li><a class="article-a" href="{title}" data-id="{_id}">{title}</a></li>
         {/articles_en}
     </ul>
     {/articles_en}
@@ -15,7 +15,7 @@
     <ul class="rtl nav">
         {?articles_en}<li><h3>עברית</h3></li>{/articles_en}
         {#articles_he}
-            <li><a href="{title}" data-id="{_id}">{title}</a></li>
+            <li><a class="article-a" href="{title}" data-id="{_id}">{title}</a></li>
         {/articles_he}
     </ul>
     {/articles_he}
@@ -46,7 +46,7 @@
         if (!state) return $(first).removeClass('hide');
         return $('#'+state.id).removeClass('hide').siblings().addClass('hide');
     };
-    $('.content ul > li > a').click(function (e) {
+    $('.article-a').click(function (e) {
         e.preventDefault();
         var $this = $(this);
         var state = {label: $this.text(), id: $this.data('id')};
