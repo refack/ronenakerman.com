@@ -26,10 +26,7 @@ app.use(stylus.middleware({
     }
 }));
 
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.cookieParser('aafa34nafksd'));
-app.use(express.cookieSession({ cookie: { maxAge: 60 * 60 * 24 * 10}, key: app.get('site')}));
+app.use(express.compress());
 app.use(express.static(path.join(__dirname, '../public')));
 
 mongoose.connect(app.get('mongo'));
