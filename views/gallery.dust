@@ -60,6 +60,7 @@
                 img.show();
             }
             caption.text(state.label);
+            document.title = state.label;
         };
 
         function showFromThumbnail(e) {

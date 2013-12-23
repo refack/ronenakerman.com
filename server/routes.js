@@ -51,7 +51,7 @@ module.exports = function(app) {
             if (page.articles_he || page.articles_en)
                 page.first = _.find(page.articles_he, {title: label}) || _.find(page.articles_en, {title: label});
 
-            return res.render(type == 'pages' ? 'page' : 'gallery', {page: page});
+            return res.render(type == 'pages' ? 'page' : 'gallery', {page: page, title: label});
         });
     });
 

@@ -26,6 +26,10 @@ app.use(stylus.middleware({
     }
 }));
 
+
+app.configure('development', function () {
+    app.use(express.logger('dev'));
+});
 app.use(express.compress());
 app.use(express.static(path.join(__dirname, '../public')));
 
