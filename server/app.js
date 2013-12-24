@@ -31,6 +31,8 @@ app.configure('development', function () {
     app.use(express.logger('dev'));
 });
 app.use(express.compress());
+app.use(express.cookieParser('aafa34nafksd'));
+app.use(express.cookieSession({ cookie: { maxAge: 60 * 60 * 24 * 10}, key: app.get('site')}));
 app.use(express.static(path.join(__dirname, '../public')));
 
 mongoose.connect(app.get('mongo'));
