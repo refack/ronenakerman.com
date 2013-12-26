@@ -6,16 +6,16 @@ var schema = new mongoose.Schema({
     title: { type: String, require: true },
     background: Types.Picture,
 
-    pictures: [{
+    pictures: {type:[{
         picture: Types.Picture,
         youtube: String,
         label: String,
-        gallery: [{
+        gallery: {type: [{
             picture: Types.Picture,
             youtube: String,
             label: String
-        }]
-    }],
+        }], stackDir: 'top'}
+    }], stackDir: 'top'},
 
 
     order: { type: Number, editable: false },

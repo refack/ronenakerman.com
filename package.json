@@ -6,15 +6,14 @@
     "start": "node server/app"
   },
   "dependencies": {
-    "express": "3.x.x",
+    "express": "",
     "consolidate": "",
     "dustjs-linkedin": "",
     "cloudinary": "",
-    "formage": "~2.2.22",
-    "mongoose": "3.8.x",
+    "formage": "",
+    "mongoose": "",
     "stylus": "",
     "nib": "",
-    "lodash": "~2.0.0",
-    "async": "~0.2.9"
+    "lodash": ""
   }
 }
