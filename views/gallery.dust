@@ -4,9 +4,8 @@
     <section class="gallery" {?background}style="background: url('{background.url}') no-repeat;{/background}">
         <div class="figure">
             {#first}
-                <img src="{@picture width="860" height="570" crop="limit" /}"/>
-                <iframe id="theplayer" width="860" height="570" src="about:blank" frameborder="0" allowfullscreen
-                        style="border:0;display:none;"></iframe>
+                <img src="{@picture width="860" height="570" crop="limit" /}" title="{label}"/>
+                <iframe id="theplayer" width="860" height="570" src="about:blank" frameborder="0" allowfullscreen style="border:0;display:none;"></iframe>
                 <p>{label}</p>
             {/first}
         </div>
@@ -57,6 +56,7 @@
             } else {
                 theplayer.hide();
                 img.attr('src', state.src);
+                img.attr('title', state.label)
                 img.show();
             }
             caption.text(state.label);
