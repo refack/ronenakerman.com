@@ -56,7 +56,7 @@
             } else {
                 theplayer.hide();
                 img.attr('src', state.src);
-                img.attr('title', state.label)
+                img.attr('title', state.label);
                 img.show();
             }
             caption.text(state.label);
