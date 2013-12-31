@@ -8,6 +8,9 @@
                 <iframe id="theplayer" width="860" height="570" {?youtube}src="http://www.youtube.com/embed/{youtube}"{:else}src="about:blank" hidden{/youtube} frameborder="0" allowfullscreen style="border:0"  ></iframe>
                 <p>{label}</p>
             {/first}
+            <a href="#" class="jTscrollerPrevButton" hidden="hidden"></a>
+            <a href="#" class="jTscrollerNextButton" hidden="hidden"></a>
+
         </div>
 
         {!<div class="slider left">
@@ -31,6 +34,8 @@
                     {/pictures}
                 </div>
             </div>
+            <a href="#" class="jTscrollerPrevButton" hidden="hidden"></a>
+            <a href="#" class="jTscrollerNextButton" hidden="hidden"></a>
         </div>
 
         <div id="tS3" class="slider left jThumbnailScroller" style="display:none">
@@ -77,10 +82,10 @@
                 caption = $('.figure p'),
                 theplayer = $('#theplayer'),
                 $sliderBottom = $('.slider.bottom').thumbnailScroller({
-                    scrollerType: "hoverAccelerate",
+                    scrollerType: "clickButtons",
                     noScrollCenterSpace: 400,
-                    acceleration: 0.5,
-                    scrollSpeed: 2000
+                    scrollEasingAmount:300, //value: milliseconds
+                    scrollSpeed: 1000
                 }),
                 $sliderLeft = $('.slider.left'),
                 $leftInner = $sliderLeft.find('.jTscroller');

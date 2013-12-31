@@ -19,7 +19,6 @@ scrollers styling
 
 .jThumbnailScroller .jTscrollerNextButton, .jThumbnailScroller .jTscrollerPrevButton {
     position: absolute;
-    display: block;
     width: 40px;
     height: 40px;
     -moz-border-radius: 20px;
@@ -29,11 +28,11 @@ scrollers styling
 }
 
 .jThumbnailScroller .jTscrollerNextButton {
-    background: #000 url(nextArrow.png) center center;
+    background: #000 url('nextArrow.png') center center;
 }
 
 .jThumbnailScroller .jTscrollerPrevButton {
-    background: #000 url(prevArrow.png) center center;
+    background: #000 url('prevArrow.png') center center;
 }
 
 .jThumbnailScroller .jTscrollerNextButton:hover, .jThumbnailScroller .jTscrollerPrevButton:hover {
