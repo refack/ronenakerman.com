@@ -5,7 +5,7 @@
         <div class="figure">
             {#first}
                 <img {?picture}src="{@picture width="860" height="570" crop="limit" /}" title="{label}"{:else}src="about:blank" hidden{/picture} />
-                <iframe id="theplayer" width="860" height="570" {?youtube}src="http://www.youtube.com/embed/{youtube}"{:else}src="about:blank" hidden{/youtube} frameborder="0" allowfullscreen style="border:0"  ></iframe>
+                <iframe id="theplayer" width="860" height="570" {?youtube}src="http://www.youtube.com/embed/{youtube}"{:else}src="about:blank" hidden{/youtube} frameborder="0" allowfullscreen style="border:0"></iframe>
                 <p>{label}</p>
             {/first}
             <a href="#" class="jTscrollerPrevButton" hidden="hidden"></a>
@@ -55,21 +55,21 @@
             var state = e.state;
             if (!state) return;
             if (state.youtube) {
-                img.hide();
+                $img.hide();
                 theplayer.attr('src', '//www.youtube.com/embed/' + state.youtube);
                 theplayer.show();
             } else {
                 theplayer.hide();
-                img.attr('src', state.src);
-                img.attr('title', state.label);
-                img.show();
+                $img.attr('src', state.src);
+                $img.attr('title', state.label);
+                $img.show();
             }
             caption.text(state.label);
             document.title = state.label;
         };
 
         function showFromThumbnail(e) {
-            if (e.button != 0) return;
+            if (e.button && e.button != 0) return null;
             e.preventDefault();
             var t = $(this);
             var state = {youtube: t.data('youtube'), src: t.data('src'), label: t.data('label')};
@@ -78,20 +78,20 @@
             return t;
         }
 
-        var img = $('.figure img'),
-                caption = $('.figure p'),
-                theplayer = $('#theplayer'),
-                $sliderBottom = $('.slider.bottom').thumbnailScroller({
-                    scrollerType: "clickButtons",
-                    noScrollCenterSpace: 400,
-                    scrollEasingAmount:300, //value: milliseconds
-                    scrollSpeed: 1000
-                }),
-                $sliderLeft = $('.slider.left'),
-                $leftInner = $sliderLeft.find('.jTscroller');
+        var $img = $('.figure img'),
+            caption = $('.figure p'),
+            theplayer = $('#theplayer'),
+            $sliderBottom = $('.slider.bottom').thumbnailScroller({
+                scrollerType: "clickButtons",
+                noScrollCenterSpace: 400,
+                scrollEasingAmount: 300, //value: milliseconds
+                scrollSpeed: 1000
+            }),
+            $sliderLeft = $('.slider.left'),
+            $leftInner = $sliderLeft.find('.jTscroller');
 
         $('a.thumbnailer').on('click', function maybeGalleryClick(e) {
-            if (e.button != 0) return;
+            if (e.button && e.button != 0) return;
             var t = showFromThumbnail.call(this, e);
             var subData = t.data('sub');
             if (!subData || subData.length === 0) {
@@ -105,7 +105,7 @@
             $sliderLeft.find('.jTscroller').css('top', 0);
             subData.forEach(function (item) {
                 var stub = $('<a class="thumbnailer"><img width=80 height=80 src="about:blank"/></a>');
-                stub.attr('href', item.label)
+                stub.attr('href', item.label);
                 var tmb = stub.find('img');
                 if (item.picture && item.picture.url) {
                     var filename = item.picture.url.split('/').pop();
@@ -124,7 +124,11 @@
                 acceleration: 4,
                 scrollSpeed: 1600
             });
-
+        });
+        $img.click(function (e) {
+            var last = this.src.split('/').pop();
+            var thumb = $('img[src$="' + last + '"][width=80]');
+            thumb.parent().next().trigger('click', e);
         });
     </script>
 {/scripts}
