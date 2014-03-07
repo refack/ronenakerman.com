@@ -1,0 +1,14 @@
+{
+  "name": "jquery-galleria",
+  "homepage": "https://github.com/aino/galleria",
+  "version": "1.3.5",
+  "_release": "1.3.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.3.5",
+    "commit": "ea62d87cf2486aa53985c0cdb1e5d75989114442"
+  },
+  "_source": "git://github.com/aino/galleria.git",
+  "_target": "*",
+  "_originalSource": "jquery-galleria"
+}
