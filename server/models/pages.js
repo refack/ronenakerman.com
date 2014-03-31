@@ -24,11 +24,9 @@ schema.methods.toString = function(){
 schema.pre('save', function(next) {
     var url = this.url;
     if (!url)
-        url = '/' + this.title;
+        url = this.title;
 
     url = url.replace(/[ \-]+/g, '-');
-    if (url.substr(0,1) !== '/')
-        url = '/' + url;
 
     this.url = url;
     next();
