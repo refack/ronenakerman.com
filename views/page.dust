@@ -42,7 +42,7 @@
     var baseUrl = '/' + location.pathname.split('/')[1];
     var first = {#page}'{#first}#{_id}{:else}article > :first-child{/first}'{/page};
     window.onpopstate = function (e) {
-        var state = e.state;
+        var state = e && e.state;
         if (!state) return $(first).removeClass('hide');
         return $('#'+state.id).removeClass('hide').siblings().addClass('hide');
     };
@@ -53,5 +53,6 @@
         history.pushState(state, state.label, baseUrl + '/' + state.label);
         window.onpopstate({state:state});
     });
+    window.onpopstate();
 </script>
 {/scripts}
