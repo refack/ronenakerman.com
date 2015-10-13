@@ -6,11 +6,11 @@
     "start": "node server/app"
   },
   "dependencies": {
-    "express": "",
+    "express": "3",
     "consolidate": "",
     "dustjs-linkedin": "",
     "cloudinary": "",
-    "formage": "",
+    "formage": "3",
     "mongoose": "",
     "stylus": "",
     "nib": "",
