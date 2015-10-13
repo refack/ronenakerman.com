@@ -1,19 +1,19 @@
 {
-  "name": "ronen-akerman",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node server/app"
-  },
-  "dependencies": {
-    "express": "3",
-    "consolidate": "",
-    "dustjs-linkedin": "",
-    "cloudinary": "",
-    "formage": "3",
-    "mongoose": "",
-    "stylus": "",
-    "nib": "",
-    "lodash": ""
-  }
+   "dependencies" : {
+      "cloudinary" : "",
+      "consolidate" : "",
+      "dustjs-linkedin" : "",
+      "express" : "3",
+      "formage" : "2",
+      "lodash" : "",
+      "mongoose" : "",
+      "nib" : "",
+      "stylus" : ""
+   },
+   "name" : "ronen-akerman",
+   "private" : true,
+   "scripts" : {
+      "start" : "node server/app"
+   },
+   "version" : "0.1.0"
 }
