@@ -16,3 +16,4 @@ npm-debug.log
 public/cdn/*
 /dump/
 /node_modules/
+.env
