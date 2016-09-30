@@ -17,9 +17,6 @@ var schema = new mongoose.Schema({
     show: { type: Boolean, 'default': true }
 });
 
-schema.methods.toString = function(){
-    return this.title;
-};
 
 schema.pre('save', function(next) {
     var url = this.url;
