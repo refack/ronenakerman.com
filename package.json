@@ -5,7 +5,8 @@
       "dustjs-linkedin" : "",
       "express" : "3",
       "formage" : "2",
-      "lodash" : "",
+      "lodash" : "2.4.1",
+      "lodash-contrib" : "241.4.14",
       "mongoose" : "",
       "nib" : "",
       "stylus" : ""
