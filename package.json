@@ -1,10 +1,10 @@
 {
    "dependencies" : {
-      "cloudinary" : "",
-      "consolidate" : "",
-      "dustjs-linkedin" : "",
-      "express" : "3",
-      "formage" : "2",
+      "cloudinary" : "1.4.3",
+      "consolidate" : "0.14.1",
+      "dustjs-linkedin" : "2.7.4",
+      "express" : "3.21.2",
+      "formage" : "2.7.34",
       "lodash" : "2.4.1",
       "lodash-contrib" : "241.4.14",
       "mongoose" : "",
