@@ -11,6 +11,9 @@
       "nib" : "",
       "stylus" : ""
    },
+   "bundledDependencies": [
+      "formage"
+   ],
    "name" : "ronen-akerman",
    "private" : true,
    "scripts" : {

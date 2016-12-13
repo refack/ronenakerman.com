@@ -1,0 +1,14 @@
+sudo: false
+language: node_js
+node_js:
+- '6'
+notifications:
+  slack: empeeric:Hsm2xE5SNniMiUAEgM0Ngcnb
+deploy:
+  provider: npm
+  email: me@refack.com
+  api_key:
+    secure: eLMBTF/VA5zprsHZY16xnUHf7wbnr9a/xVk6UsMxYg87K6EnT/2/jwfQ28cFhEn5DFiEnyAQjLG63ERxhKIIcXb4Z37XQJrjLoVKg0yaM/pIGiEyZ5WJw2sIwtzU43d2D/us0aCcLvJILYWajQglc1F61fTUxA3Fg555UUtDQU0=
+  on:
+    tags: true
+    repo: node4good/lodash-contrib
