@@ -15,5 +15,6 @@ npm-debug.log
 .idea
 public/cdn/*
 /dump/
-/node_modules/
 .env
+/node_modules/
+!/node_modules/formage
