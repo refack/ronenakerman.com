@@ -39,7 +39,6 @@ body {
   -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.4);
   box-shadow: 0 10px 20px rgba(0,0,0,0.4);
   margin-bottom: 15px;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
 }
 footer {
@@ -209,7 +208,6 @@ section {
   height: 100%;
   padding: 0 20px;
   background: #fff;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   overflow-y: auto;
 }
