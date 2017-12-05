@@ -4,7 +4,7 @@
     <section class="gallery" {?background}style="background: url('{background.url}') no-repeat;{/background}">
         <div class="figure">
             {#first}
-                <img {?picture}src="{@picture width="860" height="570" crop="limit" /}" title="{label}"{:else}src="about:blank" hidden{/picture} />
+                <img {?picture}src="{@picture width="860" height="570" crop="limit" quality="100" /}" title="{label}"{:else}src="about:blank" hidden{/picture} />
                 <iframe id="theplayer" width="860" height="570" {?youtube}src="http://www.youtube.com/embed/{youtube}"{:else}src="about:blank" hidden{/youtube} frameborder="0" allowfullscreen style="border:0"></iframe>
                 <p>{label}</p>
             {/first}
