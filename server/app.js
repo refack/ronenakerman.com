@@ -39,7 +39,7 @@ app.use(express.cookieSession({
 app.use(express.static(path.join(__dirname, '../public')))
 
 mongoose.Promise = global.Promise
-mongoose.connect(app.get('mongo'), {useMongoClient: true})
+mongoose.connect(app.get('mongo'))
 formage.init(app, express, require('./models'), {
     username: 'ronen',
     password: process.env._FORMAGE_PASSWORD,
