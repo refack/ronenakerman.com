@@ -41,9 +41,9 @@ app.use(express.static(path.join(__dirname, '../public')))
 mongoose.Promise = global.Promise
 mongoose.connect(app.get('mongo'), {useMongoClient: true})
 formage.init(app, express, require('./models'), {
-  username: 'ronen',
-  password: 'lialia45',
-  title: 'Ronen Akerman'
+    username: 'ronen',
+    password: process.env._FORMAGE_PASSWORD,
+    title: 'Ronen Akerman'
 })
 
 app.use(app.router)
