@@ -6,14 +6,16 @@ lib-cov
 *.out
 *.pid
 *.gz
+.idea
+.env
 
 pids
 logs
 results
 
 npm-debug.log
-.idea
-public/cdn/*
+
+/public/cdn/
 /dump/
 /node_modules/
 .env
